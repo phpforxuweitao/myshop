@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>注册</title>
+    {include file="common/common_head_login_register"}
+    <link rel="stylesheet" href="__HOME__/css/register.css">
+</head>
+<body>
+    <div class="head">
+        <div class="layout">
+            <ul>
+                <li>
+                    <a href="/"><img src="__HOME__/images/head_top.png"></a>
+                </li>
+                <li>
+                    <b>|</b>
+                    <b>华为商城</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="layout">
+            <div class="layout_h">
+                <div class="layout_h_l">
+                    <div class="layout_btns">
+                        <a href="javascript:(0);" data-page="reg_emails" class="reg_btns current_layoutBtn">
+                            <i></i>
+                            电子邮箱
+                        </a>
+                        <a href="javascript:(0);" data-page="reg_phones" class="reg_btns">
+                            <i></i>
+                            手机号
+                        </a>
+                    </div>
+                </div>
+                <div class="layout_h_r">
+                    <p>
+                        已有华为帐号 <a href="/login">登录></a>
+                    </p>
+                </div>
+            </div>
+            <div class="layout_b">
+                <ul>
+                    <li id="reg_email">
+                        <form id="fm_email_register">
+                            <p id="ajaxErrorMsg"></p>
+                            <div class="fm_div">
+                                <div class="fm_div_l">用户名称</div>
+                                <div class="fm_div_r">
+                                    <input type="text" name="uname" placeholder="请输入用户名" class="reg_ipt" autocomplete="off" id="uname">
+                                </div>
+                                <p class="errMsg" id="uname_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">密码</div>
+                                <div class="fm_div_r">
+                                    <input type="password" name="upwd" placeholder="请输入密码" class="reg_ipt" autocomplete="off" id="pwd1">
+                                </div>
+                                <p class="errMsg" id="pwd1_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">确认密码</div>
+                                <div class="fm_div_r">
+                                    <input type="password" id="pwd2" placeholder="请再次输入密码" class="reg_ipt" autocomplete="off">
+                                </div>
+                                <p class="errMsg" id="pwd2_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">邮箱账号</div>
+                                <div class="fm_div_r">
+                                    <input type="text" id="email" name="email" maxlength="42" class="reg_ipt" autocomplete="off" placeholder="请输入邮箱地址">
+                                </div>
+                                <p class="errMsg" id="email_errMsg"></p>
+                            </div>
+                            <div class="fm_div" style="position: relative;">
+                                <div class="fm_div_l">邮箱验证码</div>
+                                <div class="fm_div_r">
+                                    <div class="fm_div_r_l">
+                                        <input type="text" id="valiCode" maxlength="6" name="vali_code" class="reg_ipt" placeholder="请输入邮箱验证码" autocomplete="off">
+                                    </div>
+                                    <div class="fm_div_r_r">
+                                        <button id="getEmailCode">获取验证码</button>
+                                    </div>
+                                </div>
+                                <p class="errMsg" id="emailcode_errMsg"></p>
+                            </div>
+                            <div class="fm_div_btn">
+                                <input type="submit" value="注册">
+                            </div>
+                        </form>
+                    </li>
+                    <li id="reg_phone" class="hidden">
+                        <form id="fm_phone_register">
+                            <div class="fm_div">
+                                <div class="fm_div_l">手机号码</div>
+                                <div class="fm_div_r">
+                                    <input type="tel" id="rphone" name="r_phone" maxlength="11" autocomplete="off" placeholder="请输入手机号码">
+                                </div>
+                                <p class="errMsg" id="phone_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">图形验证码</div>
+                                <div class="fm_div_r">
+                                    <div class="fm_div_r_l">
+                                        <input type="text" id="p_imgCode" maxlength="4" name="vali_code" placeholder="请输入图形验证码" autocomplete="off">
+                                    </div>
+                                    <div class="fm_div_r_r">
+                                        验证码图片预留位置
+                                    </div>
+                                </div>
+                                <p class="errMsg" id="p_valcode_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">手机验证码</div>
+                                <div class="fm_div_r">
+                                    <div class="fm_div_r_l">
+                                        <input type="text" id="p_valiCode" maxlength="6" name="vali_code" placeholder="请输入手机验证码" autocomplete="off">
+                                    </div>
+                                    <div class="fm_div_r_r">
+                                        <button id="p_getEmailCode">获取验证码</button>
+                                    </div>
+                                </div>
+                                <p class="errMsg" id="p_emailcode_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">密码</div>
+                                <div class="fm_div_r">
+                                    <input type="password" name="u_pwd" placeholder="请输入密码" autocomplete="off" id="p_pwd1">
+                                </div>
+                                <p class="errMsg" id="p_pwd1_errMsg"></p>
+                            </div>
+                            <div class="fm_div">
+                                <div class="fm_div_l">确认密码</div>
+                                <div class="fm_div_r">
+                                    <input type="password" id="p_pwd2" placeholder="请再次输入密码" autocomplete="off">
+                                </div>
+                                <p class="errMsg" id="p_pwd2_errMsg"></p>
+                            </div>
+                            <div class="fm_div_btn">
+                                <input type="submit" value="注册">
+                            </div>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<script type="text/javascript" src="__HOME__/js/register.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{__NOLAYOUT__}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <title>后台登录</title><meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="__ADMIN__/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="__ADMIN__/css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="__ADMIN__/css/matrix-login.css" />
+        <link href="__ADMIN__/font-awesome/css/font-awesome.css" rel="stylesheet" />
+		<!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>-->
+    </head>
+    <body>
+        <div id="loginbox">
+            <form id="fm_login" class="form-vertical" action="/bk_login/dologin" method="post">
+				 <div class="control-group normal_text"> <h3><img src="__ADMIN__/img/zz_logo.png" alt="Logo" /></h3></div>
+                <div id="err_msg" style="font-size: 16px; color: red; text-align: center"></div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lg"><i class="icon-user"></i></span><input class="ipt" type="text" style="width: 240px;" name="uname" autofocus autocomplete="off" placeholder="请输入用户名..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_ly"><i class="icon-lock"></i></span><input class="ipt" type="password" style="width: 240px;" name="upwd" autocomplete="off" placeholder="请输入密码..." />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="main_input_box">
+                            <span class="add-on bg_lb"><i class="icon-picture"></i></span><input class="ipt" type="text" maxlength="4" style="width: 125px;" name="vCode" placeholder="请输入验证码..." />
+                            <div style="display: inline-block; position: relative; top: -2px;">
+                               <img class="verifyImg" title="看不清?那就点击我吧" alt="验证码" src="{:url('/verify')}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <input type="submit" style="outline: none; display: block; width: 260px; margin: 0 auto;" class="btn btn-success span4" value="登录" />
+                </div>
+            </form>
+        </div>
+        <script src="__ADMIN__/js/jquery.min.js"></script>
+        <script src="__ADMIN__/js/admin.login.js"></script>
+    </body>
+</html>

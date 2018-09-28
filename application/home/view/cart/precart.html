@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="common/common_meta"}
+    <title>购物车页面</title>
+    <link rel="stylesheet" href="__HOME__/plugins/amazeui/css/amazeui.min.css">
+    <link rel="stylesheet" href="__HOME__/css/common_header.css" type="text/css"><!--公共header部分-->
+    <link rel="stylesheet" href="__HOME__/css/common_footer.css" type="text/css"><!--公共footer部分-->
+    <link rel="stylesheet" href="__HOME__/css/shopping_cart.css" type="text/css"><!--购物车页面css样式-->
+    <script src="__HOME__/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="__HOME__/plugins/amazeui/js/amazeui.min.js"></script>
+
+    <style>
+        .g_list {
+            height: 220px;
+            padding: 20px 20px;
+            margin-top: 20px;
+            background-color: white;
+        }
+        .list_l>img {
+            width: 140px;
+            height: 140px;
+            float: left;
+        }
+        .list_l>.info {
+            margin-top: 20px;
+            float: left;
+            width: 600px;
+            padding: 0 30px;
+        }
+        .link {
+            position: relative;
+            width: 400px;
+            height: 160px;
+            float: right;
+        }
+        .link>a:nth-child(1) {
+            position: absolute;
+            bottom: 0;
+            display: inline-block;
+            padding: 0 30px;
+            height: 40px;
+            line-height: 40px;
+            color: black;
+            background-color: #dcdcdc;
+            border: 1px solid #dcdcdc;
+        }
+        .link>a:nth-child(1):hover {
+            background-color: #eeeeee;
+            border: 1px solid #eeeeee;
+            color: #797979;
+        }
+        .link>a:nth-child(2) {
+            position: absolute;
+            bottom: 0;
+            left: 120px;
+            display: inline-block;
+            padding: 0 30px;
+            height: 40px;
+            line-height: 40px;
+            color: white;
+            background-color: #b42528;
+            border: 1px solid #b42528;
+        }
+        .link>a:nth-child(2):hover {
+            background-color: #dc152d;
+            border: 1px solid #dc152d;
+            color: white;
+        }
+    </style>
+</head>
+<body class="wide" style="min-width: 1200px; overflow-x: auto;">
+    {include file="common/common_shortnav"}
+<div class="header">
+    <div class="layout">
+        <div class="layout_h"></div>
+        <div class="layout_b">
+            <div class="header_l" style="width: 800px;">
+                <div class="header_l_img">
+                    <img src="__HOME__/images/head_log.png">
+                </div>
+                <div style="width: 300px;" class="header_l_stepName">加入购物车成功</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--加入购物车成功-->
+<div class="g_list">
+    <div class="list_l">
+        <img src="/{:config('app.goodsImg_save_path')}{$ginfo->gpic}">
+        <div class="info">
+            <p>{$ginfo->gname}</p>
+            <p>{$ginfo->gdesc} 【 数量：<span> {$ginfo->cnt} </span>】</p>
+        </div>
+    </div>
+    <div class="link">
+        <a href="/glist?id={:session('glist_id')}">返回</a>
+        <a href="/cart/list">去购物车结算</a>
+    </div>
+</div>
+
+<!--热销推荐-->
+<div class="hot_recommand">
+    <div class="hot_recommand_h">热销推荐</div>
+    <div class="hot_recommand_b">
+        <ul>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+            <li>
+                <a href="#">
+                    <div class="hot_recommand_b_img">
+                        <img src="__HOME__/images/phone8.jpg">
+                    </div>
+                    <div class="hot_recommand_b_name">荣耀v10</div>
+                </a>
+                <div class="hot_recommand_b_price">
+                    &yen; <span>2499</span>
+                </div>
+            </li>
+        </ul>
+        <!--class='btn_disabled' 表示当前按钮不可点击-->
+        <div title="上一列" class="prev btn_disabled"> < </div>
+        <div title="下一列" class="next"> > </div>
+    </div>
+</div>
+
+{include file="common/common_footer"}
+{include file="common/common_js"}
+</body>
+</html>

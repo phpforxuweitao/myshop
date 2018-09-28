@@ -1,0 +1,249 @@
+<!--顶部导航 shortnav-->
+<div class="shortnav">
+    <div class="layout">
+        <div class="snav_l">
+            <ul>
+                <li><a href="/">首页</a></li>
+                <li><a href="#">华为官网</a></li>
+                <li><a href="#">荣耀官网</a></li>
+                <li><a href="#">花粉俱乐部</a></li>
+                <li><a href="#">帮助中心</a></li>
+                <li><a href="#">V码(优购码)</a></li>
+                <li><a href="#">企业购</a></li>
+                <li><a href="#">Select Region</a></li>
+                <li>
+                    <!--更多精彩下拉框-->
+                    <div class="snav_l_dropdown">
+                        <div class="h">
+                            <a class="icon_dropdown">更多精彩</a>
+                        </div>
+                        <div class="b hide">
+                            <div class="b_more">
+                                <ul>
+                                    <li><a href="#" target="_blank">EMUI</a></li>
+                                    <li><a href="#" target="_blank">应用市场</a></li>
+                                    <li><a href="#" target="_blank">华为终端云空间</a></li>
+                                    <li><a href="#" target="_blank">开发者联盟</a></li>
+                                </ul>
+                            </div>
+                            <div class="qrcode">
+                                <a href="#" target="_blank" title="下载客户端">
+                                    <img src="__HOME__/images/qrcode_vmall_new_app01.png" alt="客户端下载二维码">
+                                </a>
+                                <p>
+                                    扫一扫，
+                                    <a href="#" target="_blank" title="下载客户端">下载客户端</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--更多精彩下拉框结束-->
+                </li>
+            </ul>
+        </div>
+        <div class="snav_r">
+            <ul>
+                <!--未登录状态框-->
+                <li id="unlogin_status" class="{if !empty(session('login_home_info.islogin'))}hide{/if}">
+                    <div class="unlogin_register">
+                        <a href="/login">
+                            请登录
+                        </a>
+                        <a href="/register">
+                            注册
+                        </a>
+                    </div>
+                </li>
+                <!--未登录状态框 end-->
+                <!--已登录状态框-->
+                <li id="login_status" class="{if empty(session('login_home_info.islogin'))}hide{/if}">
+                    <div class="login_status_dropdown">
+                        <div class="login_register">
+                            <a href="/userCenter">
+                                {:session('login_home_info.username')}
+                            </a>
+                        </div>
+                        <div class="login_register_b hide">
+                            <div class="login_register_b_head">
+                                <div class="user_head fl">
+                                    <div class="user_head_img_level">
+                                        <em>V</em>
+                                        <i id="user_levelNum">5</i>
+                                    </div>
+                                </div>
+                                <div class="user_info fl">
+                                    <a href="#" rel="nofollow" target="_blank">
+                                        <div class="user_info_name" id="up_loginName_info">{:session('login_home_info.username')}</div>
+                                    </a>
+                                    <div class="user_info_btn">
+                                        <a href="#" id="authentication_n" class="icon_realname_y" style="display: block;">
+                                            <span>未实名</span>
+                                        </a>
+                                        <a href="#" id="authentication_y" class="icon_realname_n" style="display: none;" rel="nofollow">
+                                            <span>已实名</span>
+                                        </a>
+                                        <a href="#" rel="nofollow" id="icon_mail">
+                                                            <span class="icon_mail_info">
+                                                                站内信
+                                                            </span>
+                                            <span id="mail_msgCount" class="mail_num" style="display: block;">(99)</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login_register_b_main">
+                                <div class="main_h">
+                                    <span class="f1">我的订单</span>
+                                    <a href="#" class="fr">更多<span style="font-size: 14px;">>></span></a>
+                                </div>
+                                <div class="main_b">
+                                    <dl>
+                                        <dt><a href="/order/myorder">待支付 {$unpay_num | default=0}</a></dt>
+                                        <dt><a href="#">待收货</a></dt>
+                                        <dt><a href="#">待评价</a></dt>
+                                        <dt><a href="#">退换货</a></dt>
+                                        <dt><a href="#">旧机回收</a></dt>
+                                    </dl>
+                                    <div class="main_b_huaban">
+                                        <dl>
+                                            <dt>
+                                                <a href="#" id="point">
+                                                    <p class="p_img"></p>
+                                                </a>
+                                                <p class="p_dec">积分</p>
+                                                <p class="p_num">
+                                                    <span id="userPointBalance">0</span> 分
+                                                </p>
+                                            </dt>
+                                            <dt>
+                                                <a href="#">
+                                                    <p class="p_img"></p>
+                                                </a>
+                                                <p class="p_dec">优惠卷</p>
+                                                <p class="p_num">
+                                                    <span id="couponCount">0</span> 张
+                                                </p>
+                                            </dt>
+                                            <dt>
+                                                <a href="#">
+                                                    <p class="p_img"></p>
+                                                </a>
+                                                <p class="p_dec">代金卷</p>
+                                                <p class="p_num">
+                                                    <span id="balaceAmount">0.00</span> 元
+                                                </p>
+                                            </dt>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="login_register_b_outlogin">
+                                <a href="/logout" class="u_out">退出登录</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <!--已登录状态框 end-->
+                <li><a href="/order/myorder">我的订单</a></li>
+                <!--已登录/未登录 空购物车下拉框-->
+                <li id="empty_shopCart" class="{if !empty(session('login_home_info.islogin'))}hide{/if}">
+                    <div class="empty_shop_cart">
+                        <div class="empty_shop_cart_h">
+                            <div class="empty_shop_cart_h_count">
+                                <a href="/cart/list">
+                                    购物车<span>(0)</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="empty_shop_cart_b hide">
+                            <div class="empty_shop_cart_b_bgimg"></div>
+                            <div class="empty_shop_cart_b_msg">您的购物车是空的，赶紧选购吧～</div>
+                        </div>
+                    </div>
+                </li>
+                <!--已登录/未登录 空购物车下拉框 结束-->
+
+                <!--已登录非空购物车下拉框-->
+                <li id="shopCart" class="{if empty(session('login_home_info.islogin'))}hide{/if}">
+                    <div class="shop_cart">
+                        <div class="shop_cart_h">
+                            <div class="shop_cart_h_count">
+                                <a href="/cart/list">
+                                    购物车<span id="shop_cartCound">(
+                                    {if !empty(session('cartlist'))}
+                                        {:session('orders.cnt')}
+                                    {else}
+                                        0
+                                    {/if})
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="shop_cart_b hide">
+                            <!--商品列表-->
+                            <div class="shop_cart_b_list">
+                                <dl>
+                                    {if !empty(session('cartlist'))}
+
+                                        {foreach :session('cartlist') as $k=>$v}
+                                        <dd>
+                                            <div class="shop_list_info">
+                                                <div class="shop_list_info_left">
+                                                    <input type="checkbox" name="goosd_id[]" value="{$v->gid}" checked>
+                                                </div>
+                                                <div class="shop_list_info_right">
+                                                    <div class="h_left">
+                                                        <img src="/{:config('app.goodsImg_save_path')}{$v->gpic}">
+                                                    </div>
+                                                    <div class="h_right">
+                                                        <div class="h_right_goodsName">
+                                                            {$v->gname}
+                                                        </div>
+                                                        <div class="h_right_goodsColor">
+                                                            白色
+                                                        </div>
+                                                        <div class="h_right_price_num">
+                                                            <span class="list_realPrice">&yen; 0.00</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span class="list_cutPrice">&yen; {$v->price}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                                            <span class="list_goodsNum">x {$v->cnt}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="shop_list_parts">
+                                                <div class="parts_left">
+                                                    <span>配</span>
+                                                </div>
+                                                <div class="parts_right">
+                                                    <span class="partsInfo">天际通 1GB全球上网流量x1天际通 1GB全球上网流量x1天际通 1GB</span>
+                                                </div>
+                                            </div>
+                                        </dd>
+                                        {/foreach}
+                                    {/if}
+                                </dl>
+                            </div>
+                            <!--商品列表 结束-->
+                            <!--总计与结算-->
+                            <div class="shop_cart_b_settlement">
+                                <div class="shop_cart_b_settlement_left">
+                                    <div class="h">总计：</div>
+                                    <div class="price">
+                                        <span id="all_cutPrice">&yen; {:session('orders.total')}</span>
+                                        <span id="all_realPrice">&yen; 0.00</span>
+                                    </div>
+                                </div>
+                                <div class="shop_cart_b_settlement_right">
+                                    <a href="/cart/list" style="color: white;" id="settlement">结算</a>
+                                </div>
+                            </div>
+                            <!--总计与结算 结束-->
+                        </div>
+                    </div>
+                </li>
+                <!--已登录非空购物车下拉框 结束-->
+            </ul>
+        </div>
+    </div>
+</div>
+<!--顶部导航 end-->

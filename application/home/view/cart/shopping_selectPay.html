@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>华为收银台</title>
+    <link rel="icon" type="image/jpg" href="./images/title_logo.jpg">
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="./images/title_logo.jpg">
+    <link rel="stylesheet" href="./css/shopping_selectPay.css">
+    <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+</head>
+<body  class="wide" style="min-width: 1200px; overflow-x: auto;">
+    <div class="main">
+        <div class="h">
+            <div class="h_l">
+                <img src="./images/nav_logo.png">
+            </div>
+            <div class="h_r">收银台</div>
+        </div>
+        <div class="b">
+            <div class="b_h">
+                <div class="info">
+                    <div class="info_h">
+                        <div class="info_h_l">订单提交成功，只差付款了~</div>
+                        <div class="info_h_r">订单金额：<span>&yen; 25464.00</span></div>
+                    </div>
+                    <div class="info_list">
+                        <dl>
+                            <dt>请您在<span>23小时59分24秒</span>内完成支付，否则订单将自动取消.</dt>
+                            <dd>订单编号：<span>2315649879</span></dd>
+                            <dd>收货信息：<span>许伟涛</span> <span>135*******9</span> <span>广东广州市天河区*****幼儿园</span></dd>
+                            <dd>商品名称：<span>HUAWEI Mate 10 Pro 6GB+128GB 全网通版(银钻灰),HUAWEI Mate 10 ProHUAWEI Mate 10 Pro 6GB+128GB 全网通版(银钻灰),HUAWEI Mate 10 Pro</span></dd>
+                            <dd>发票信息：<span>电子普通发票</span> <span>个人</span></dd>
+                            <dd>购买时间：<span>2018-05-26 15:35</span></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="b_f">
+                <div class="tab">
+                    <ul id="tabUl">
+                        <li class="tag_choise">
+                            <span>常用</span>
+                            <ul>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">推荐</div>
+                                        <div class="head_r">
+                                            <!--<a href="#">这是一条链接</a>-->
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box box_choise" data-available="true" data-choise="true">
+                                        <img src="./images/ALIPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">新活动</div>
+                                        <div class="head_r">
+                                            <a href="#">平安信用卡随机立减最高50</a>
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/WXPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">NEW</div>
+                                        <div class="head_r">
+                                            需要安装掌上生活客户端
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box unavailable" data-available="false" data-choise="false">
+                                        <img src="./images/CMBLIFE.png">
+                                    </div>
+                                    <div class="tip">待支付金额低于掌上生活起始金额300.00元</div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">NEW</div>
+                                        <div class="head_r">
+                                            <!--<a href="#">这是一条链接</a>-->
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/HUAWEIPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <!--<div class="head_l">花呗</div>-->
+                                        <!--<div class="head_r">-->
+                                            <!--<a href="#">这是一条链接</a>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box unavailable" data-available="false" data-choise="false">
+                                        <img src="./images/HUABEI.png">
+                                    </div>
+                                    <div class="tip">待支付金额低于花呗起始金额300.00元</div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="">
+                            <span>平台支付</span>
+                            <ul class="hide">
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">推荐</div>
+                                        <div class="head_r">
+                                            <!--<a href="#">这是一条链接</a>-->
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/ALIPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">新活动</div>
+                                        <div class="head_r">
+                                            <a href="#">平安信用卡随机立减最高50</a>
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/WXPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">NEW</div>
+                                        <div class="head_r">
+                                            <!--<a href="#">这是一条链接</a>-->
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/HUAWEIPAY.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>分期支付</span>
+                            <ul class="hide">
+                                <li>
+                                    <div class="head">
+                                        <div class="head_l">NEW</div>
+                                        <div class="head_r">
+                                            需要安装掌上生活客户端
+                                        </div>
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box unavailable" data-available="false" data-choise="false">
+                                        <img src="./images/CMBLIFE.png">
+                                    </div>
+                                    <div class="tip">待支付金额低于掌上生活起始金额300.00元</div>
+                                </li>
+                                <li>
+                                    <div class="head">
+                                        <!--<div class="head_l">花呗</div>-->
+                                        <!--<div class="head_r">-->
+                                        <!--<a href="#">这是一条链接</a>-->
+                                        <!--</div>-->
+                                    </div>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box unavailable" data-available="false" data-choise="false">
+                                        <img src="./images/HUABEI.png">
+                                    </div>
+                                    <div class="tip">待支付金额低于花呗起始金额300.00元</div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>网银支付</span>
+                            <ul class="hide">
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/CMB.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/ICBC.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/CCB.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/BCM.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/ABC.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/CITIC.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                                <li>
+                                    <!--选中支付方式后 添加选中样式 class='box_choise'-->
+                                    <div class="box " data-available="true" data-choise="false">
+                                        <img src="./images/SPDB.png">
+                                    </div>
+                                    <div class="tip"></div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="btn">
+                    <a href="javascript:;" id="confirmPay">确认支付</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--底部版权跟备案信息-->
+    <div class="footer">
+        <div class="layout">
+            <div class="footer_l">
+                <img src="./images/flogo.png">
+            </div>
+            <div class="footer_c">
+                <p>
+                    <a href="#">隐私政策</a> <a href="#">服务协议</a> Copyright &copy; 2012-2018 华为软件技术有限公司 版权所有 保留一切权利 公安备案 <a
+                        href="#">苏公网安备32222222222222号</a> | <a href="#">苏ICP备123456789号-7</a> | 增值电信业务经营许可证 : 苏B2-20130048号 网络文化经营许可证 :
+                    <a href="#">苏网文[2015] 1666-022号</a>
+                </p>
+            </div>
+            <div class="footer_r">
+                <a href="#">
+                    <img src="./images/img_footer.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="./images/img_footer1.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="./images/img_footer2.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="./images/img_footer3.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="./images/img_footer4.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!--底部版权跟备案信息 结束-->
+<script src="./js/shopping_selectPay.js"></script>
+</body>
+</html>

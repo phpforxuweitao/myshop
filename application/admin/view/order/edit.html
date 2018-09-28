@@ -1,0 +1,158 @@
+<style>
+    .form-vertical {
+        margin-top: 20px;
+    }
+    @media screen and (min-width: 450px){
+        .form-vertical {
+            position: relative;
+            left: 30px;
+        }
+    }
+    @media screen and (min-width: 500px){
+        .form-vertical {
+            position: relative;
+            left: 100px;
+        }
+    }
+    .form-vertical table tr td:nth-child(1){
+        text-align: right;
+    }
+    .form-vertical table tr td:nth-child(2){
+        text-align: left;
+    }
+    .form-vertical table tr td:nth-child(2)>input,select,textarea {
+        margin-left: 20px;
+    }
+    .form-vertical table tr td:nth-child(2)>textarea {
+        margin-top: 10px;
+        resize: none;
+        width: 600px;
+    }
+    .form-vertical table tr td:nth-child(2)>input[type='submit'] {
+        padding: 4px 95px;
+    }
+    .form-vertical table tr td:nth-child(2)>label {
+        float: left;
+        margin-left: 20px;
+    }
+    .form-vertical table tr td:nth-child(2)>label>input[type='radio'] {
+        position: relative;
+        top: -3px;
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        background-color: green;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="javascript:;" class="current">修改商品</a> </div>
+        <h1>
+            <a href="/bk_order/list" class="btn btn-success" style="float:left;margin:5px 0;">返回订单列表</a>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <h5>修改商品页面</h5>
+                    </div>
+                    <div class="widget-content">
+                        <form id="fm_addGoods" class="form-vertical" action="/bk_order/update-{$oinfo->oid}" method="post">
+                            <table>
+                                <tr>
+                                    <td>订单号</td>
+                                    <td>
+                                        <input type="text" disabled name="oid" value="{$oinfo->oid}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>总金额</td>
+                                    <td>
+                                        <input type="text" name="total" value="{$oinfo->total}" autocomplete="off" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>下单时间</td>
+                                    <td>
+                                        <input type="text" disabled value="{:date('Y-m-d H:i:s',$oinfo->create_time)}" autocomplete="off" name="create_time" class="g_number" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>收货人</td>
+                                    <td>
+                                        <input type="text" value="{$oinfo->homeusers->uname}" name="user_uname" autocomplete="off" class="g_number" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>收货地址</td>
+                                    <td class="gpic">
+                                        <input type="text" name="addr" value="{$oinfo->addr}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>联系号码</td>
+                                    <td class="gpic">
+                                        <input type="text" name="tel" value="{$oinfo->tel}">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>用户留言</td>
+                                    <td>
+                                        <textarea name="umsg" title="" cols="80" rows="4">{$oinfo->umsg}</textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>订单状态</td>
+                                    <td>
+                                        {/*[1=>'未发货',2=>'已发货',3=>'已收货',4=>'取消订单']*/}
+                                        <label>
+                                            <input type="radio" name="status" {if $oinfo->status =='未发货'}checked{/if} value="1">未发货
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" {if $oinfo->status =='已发货'}checked{/if} value="2">已出库,未收货
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" {if $oinfo->status =='已收货'}checked{/if} value="3">已收货
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" {if $oinfo->status =='取消订单'}checked{/if} value="4">取消订单
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" class="btn btn-success btn_save" value="修改" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //给所有添加按钮添加 点击之后按钮的不可用状态
+    $("#fm_addGoods input").keydown(function(){
+        if (event.keyCode == 13) { //判断是否为回车键,Event是window对象的一个属性,是全局的
+            event.keyCode = 0;//屏蔽回车键
+            event.returnValue = false;
+            alert('回车键不可用!点击添加按钮提交');
+        }
+    });
+    $(".btn_save").click(function () {
+        //添加按钮点击事件
+        // $(this).attr('disabled','disabled');
+    });
+    //商品定价和库存不允许小于0
+    $(".g_number").bind('input propertychange',function(){
+        if ( $(this).val() <=-1 ) {
+            $(this).val(0);
+        }
+    });
+</script>

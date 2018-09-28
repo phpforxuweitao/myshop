@@ -1,0 +1,150 @@
+<style>
+    .form-vertical {
+        margin-top: 20px;
+    }
+    @media screen and (min-width: 450px){
+        .form-vertical {
+            position: relative;
+            left: 30px;
+        }
+    }
+    @media screen and (min-width: 500px){
+        .form-vertical {
+            position: relative;
+            left: 120px;
+        }
+    }
+    @media screen and (min-width: 700px){
+        .form-vertical {
+            position: relative;
+            left: 200px;
+        }
+    }
+    @media screen and (min-width: 850px){
+        .form-vertical {
+            position: relative;
+            left: 240px;
+        }
+    }
+    .form-vertical table tr td:nth-child(2){
+        text-align: left;
+    }
+    .form-vertical table tr td:nth-child(2)>input,select {
+        margin-left: 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>input[type='submit'] {
+        padding: 4px 95px;
+    }
+    .form-vertical table tr td:nth-child(2).sex {
+        padding-bottom: 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>label {
+        float: left;
+        margin: 0 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>label>input[type='radio'] {
+        position: relative;
+        top: -3px;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">修改用户信息</a> </div>
+        <h1>
+            <a href="/bk_user/list" class="btn btn-success" style="float:left;margin:5px 0;">返回用户列表</a>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-user"></i></span>
+                        <h5>修改用户信息页面</h5>
+                    </div>
+                    <div class="widget-content">
+                        <form id="fm_upUser" class="form-vertical" action="/bk_homeuser/update/{$uinfo->uid}" method="post">
+                            <table>
+                                <tr>
+                                    <td>权限</td>
+                                    <td>
+                                        <select name="auth" id="auth">
+                                            <option value="">请选择</option>
+                                            <option {if $uinfo->auth === '普通会员'}selected{/if} value="1">普通会员</option>
+                                            <option {if $uinfo->auth === '黄金会员'}selected{/if} value="2">黄金会员</option>
+                                            <option {if $uinfo->auth === '白金会员'}selected{/if} value="3">白金会员</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>用户名</td>
+                                    <td>
+                                        <input type="text" name="uname" value="{$uinfo->uname}" autocomplete="off" placeholder="请输入用户名...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>密码</td>
+                                    <td>
+                                        <input type="password" autocomplete="off" name="upwd" placeholder="请输入密码..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>确认密码</td>
+                                    <td>
+                                        <input type="password" autocomplete="off" name="reupwd" placeholder="请输入确认密码..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>性别</td>
+                                    <td class="sex">
+                                        <label>
+                                            <input type="radio" {if $uinfo->sex === '男'}checked{/if} autocomplete="off" name="sex" checked value="m"> 男
+                                        </label>
+                                        <label>
+                                            <input type="radio" {if $uinfo->sex === '女'}checked{/if} autocomplete="off" name="sex" value="w"> 女
+                                        </label>
+                                        <label>
+                                            <input type="radio" {if $uinfo->sex === '保密'}checked{/if} name="sex" value="x"> 保密
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>电话</td>
+                                    <td>
+                                        <input type="tel" maxlength="11" minlength="11" name="tel" value="{$uinfo->tel | default=''}" placeholder="请输入手机号码...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>邮箱</td>
+                                    <td>
+                                        <input type="email" name="email" value="{$uinfo->email | default=''}" placeholder="请输入邮箱账号...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" class="btn btn-success btn_save" value="修改" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //给所有添加按钮添加 点击之后按钮的不可用状态
+    $("#fm_upUser input").keydown(function(){
+        if (event.keyCode == 13) { //判断是否为回车键,Event是window对象的一个属性,是全局的
+            event.keyCode = 0;//屏蔽回车键
+            event.returnValue = false;
+            alert('回车键不可用!点击添加按钮提交');
+        }
+    });
+    $(".btn_save").click(function () {
+        //添加按钮点击事件
+        // $(this).attr('disabled','disabled');
+    });
+</script>

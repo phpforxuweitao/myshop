@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="common/common_meta"}
+    <title>我的订单页面</title>
+    <link rel="stylesheet" href="__HOME__/plugins/amazeui/css/amazeui.min.css">
+    <link rel="stylesheet" href="__HOME__/css/common_header.css" type="text/css"><!--公共top部分-->
+    <link rel="stylesheet" href="__HOME__/css/common_footer.css" type="text/css"><!--公共footer部分-->
+    <link rel="stylesheet" href="__HOME__/css/member_common_menue.css"><!--个人中心左侧公共菜单部分样式-->
+    <link rel="stylesheet" href="__HOME__/css/my_order.css"><!--我的订单样式-->
+    <script src="__HOME__/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="__HOME__/plugins/amazeui/js/amazeui.min.js"></script>
+    <style>
+        #pageList{
+            position: relative;
+            height: 40px;
+        }
+        #pageList>ul{
+            position: absolute;
+            top: 10px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        #pageList>ul>li {
+            float: left;
+            width: 40px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            border: 1px solid #cccccc;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        #pageList>ul>li>a {
+            color: #000;
+        }
+        #pageList>ul>li>a:hover {
+            color: white;
+        }
+        #pageList>ul>li:hover {
+            background-color: #dbdbdb;
+        }
+        #pageList>ul>li>a {
+            display: inline-block;
+            width: 40px;
+            height: 25px;
+        }
+        .pagelist_r>ul {
+            top: 0;
+            right: 0;
+        }
+        .pagelist_l>ul {
+            top: 0;
+            left: 0;
+        }
+        #pageList>ul>.active {
+            color: white;
+            background-color: #cbcbcb;
+        }
+        #pageList>ul>li.disabled {
+            color: #c9c9c9;
+            background-color: #f0f0f0;
+            border: 1px solid #f0f0f0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="wide" style="min-width: 1200px; overflow-x: auto;">
+
+    {include file="common/common_shortnav"}
+    {include file="common/common_nav"}
+
+    <!--我的订单主体内容区域-->
+    <div class="main">
+        <div class="main_nav">
+            <ul>
+                <li>
+                    <a href="/">首页 ></a>
+                </li>
+                <li>
+                    <a href="#">我的商城 ></a>
+                </li>
+                <li>
+                    <a href="/order/myorder">我的订单</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main_info">
+            <!--我的订单左侧菜单栏-->
+            <div class="main_info_menu">
+                <ul>
+                    <li>
+                        <a href="#">我的商城</a>
+                    </li>
+                    <li>
+                        <a href="#">站内信</a>
+                    </li>
+                    <li>
+                        <a href="#">帮助中心</a>
+                    </li>
+                    <li>
+                        <span>订单中心</span>
+                        <ul>
+                            <li>
+                                <!--如果当前链接被点击 则给当前a标签添加class='linkRed'-->
+                                <a href="/order/myorder" class="">我的订单</a>
+                            </li>
+                            <li>
+                                <a href="#">我的退换货</a>
+                            </li>
+                            <li>
+                                <a href="#">我的退款</a>
+                            </li>
+                            <li>
+                                <a href="#">我的回收单</a>
+                            </li>
+                            <li>
+                                <a href="#">商品评价</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>我的资产</span>
+                        <ul>
+                            <li>
+                                <a href="#">我的积分</a>
+                            </li>
+                            <li>
+                                <a href="#">我的优惠卷</a>
+                            </li>
+                            <li>
+                                <a href="#">我的代金券</a>
+                            </li>
+                            <li>
+                                <a href="#">我的花瓣</a>
+                            </li>
+                            <li>
+                                <a href="#">等级与权限</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>购买支持</span>
+                        <ul>
+                            <li>
+                                <a href="#">收货地址管理</a>
+                            </li>
+                            <li>
+                                <a href="#">实名认证</a>
+                            </li>
+                            <li>
+                                <a href="#">我的预约</a>
+                            </li>
+                            <li>
+                                <a href="#">到货通知</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!--我的订单右侧信息展示区域-->
+            <div class="main_info_content">
+                <div class="content_h">
+                    <div class="content_h_l" style="text-indent: 10px;"> 我的订单</div>
+                    <div class="content_h_r" id="choose_order_history">
+                        <!--鼠标移入到a标签的时候添加class='hover_this'并且将另一个a标签的class去掉-->
+                        <a href="javascript:;" class="default hover_this">最近六月内订单</a>
+                        <a href="javascript:;" class="">六个月前订单</a>
+                    </div>
+                </div>
+                <div class="content_b">
+                    <div class="content_b_btns">
+                        <ul id="order_btns">
+                            <li>
+                                <a href="#" class="">全部有效订单</a>
+                            </li>
+                            <li>
+                                <a href="#" class="default_order_btns">待支付 &nbsp;<span>{$unpay_num | default=0}</span></a>
+                            </li>
+                            <li>
+                                <a href="#">待评价 &nbsp;<span></span></a>
+                            </li>
+                            <li>
+                                <a href="#">待收货 &nbsp;<span></span></a>
+                            </li>
+                            <li>
+                                <a href="#">已完成 &nbsp;<span></span></a>
+                            </li>
+                            <li>
+                                <a href="#">已取消 &nbsp;<span></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content_b_show">
+                        <div class="content_b_show_head">
+                            <ul>
+                                <li>商品</li>
+                                <li>单价/元</li>
+                                <li>数量</li>
+                                <li>实付款/元</li>
+                                <li>订单状态及操作</li>
+                            </ul>
+                        </div>
+                        <!--订单列表不为空-->
+                        <div class="content_b_show_list {if empty($u_orderlist)}hide{/if}">
+                            {if !empty($u_orderlist)}
+                                {volist name="u_orderlist" id="vo"}
+                                <div class="show_list_item">
+                                    <div class="list_item_info">
+                                        <div class="item_info_l">
+                                            <span>
+                                                <input type="checkbox" class="order_check" name="payCheck" value="订单号">
+                                            </span>&nbsp;
+                                            <span>{:date('Y-m-d H:i:s',$vo->create_time)}  </span>&nbsp;&nbsp;
+                                            <span>订单号 : {$vo->oid}</span>
+                                        </div>
+                                        <div class="item_info_r">
+                                            {if $vo->status=='已发货'}
+                                            <a href="/confirmGet-{$vo->oid}" onclick="return confirm('确认收货?');">确认收货</a>
+                                            {elseif $vo->status=='已收货'}
+                                            <a href="/del_success_order" onclick="return confirm('确认删除订单记录?');">删除订单记录</a>
+                                            {else}
+                                            <a href="/selectPay-{$vo->oid}">立即支付</a>
+                                            <a href="#">修改订单</a>
+                                            <a href="/deleteOrder-{$vo->oid}" onclick="return confirm('确定要取消该订单吗?')">取消订单</a>
+                                            {/if}
+                                        </div>
+                                    </div>
+                                    <div class="list_item_pro">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <!--第一个tr中多两个td元素一个是实际付款钱数另一个是按钮组-->
+                                            {foreach $vo->details as $k=>$v}
+                                            <tr align="center">
+                                                <td class="col_pro_img">
+                                                    <img src="/{:config('app.goodsImg_save_path')}{$v->goodss->gpic}">
+                                                </td>
+                                                <td align="left" class="col_pro_info">{$v->goodss->gname}</td>
+                                                <td class="col_price">&yen; {$v->goodss->price}</td>
+                                                <td class="col_quty">{$v->cnt}</td>
+                                                <td class="col_quty">{$v->cnt * $v->price}</td>
+                                            </tr>
+                                            {/foreach}
+                                        </table>
+                                    </div>
+                                </div>
+                                {/volist}
+                            {/if}
+                        </div>
+                        <!--订单列表为空的时候-->
+                        <div class="content_b_show_list_empty {if !empty($u_orderlist)}hide{/if}">
+                            没有订单信息
+                        </div>
+                        <div id="pageList" class="pagelist_r">
+                            {$u_orderlist | raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--我的订单主体内容区域 结束-->
+
+
+{include file="common/common_footer"}
+{include file="common/common_js"}
+<script src="__HOME__/js/my_order.js" type="text/javascript"></script>
+</body>
+</html>

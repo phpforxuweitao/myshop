@@ -1,0 +1,69 @@
+
+<!--左侧菜单栏-->
+<div id="sidebar">
+    <a href="#" class="visible-phone"><i class="icon icon-home"></i> 华为商城后台中心</a>
+    <ul>
+        <li class="{$menu_index | default=''}"><a href="/bk_index"><i class="icon icon-home"></i> <span>华为商城后台中心</span></a> </li>
+        <li class="submenu {$menu_goods | default=''}"> <a href="#"><i class="icon icon-th-list"></i> <span>商品管理</span></a>
+            <ul>
+                <li class="{$menu_goods_add | default=''}"><a href="/bk_goods/add">添加商品</a></li>
+                <li class="{$menu_goods_list | default=''}"><a href="/bk_goods/list">商品列表</a></li>
+            </ul>
+        </li>
+        <li class="submenu {$menu_cate | default=''}"> <a href="#"><i class="icon icon-th-list"></i> <span>分类管理</span></a>
+            <ul>
+                <li class="{$menu_cate_add | default=''}"><a href="/bk_cate/add">添加分类</a></li>
+                <li class="{$menu_cate_list | default=''}"><a href="/bk_cate/list">分类列表</a></li>
+            </ul>
+        </li>
+        <li class="submenu {$menu_order | default=''}"> <a href="#"><i class="icon icon-th-list"></i> <span>订单管理</span></a>
+            <ul>
+                <li class="{$menu_order_list | default=''}"><a href="/bk_order/list">订单列表</a></li>
+            </ul>
+        </li>
+        <li class="submenu {$menu_homeuser | default=''}"> <a href="#"><i class="icon icon-user"></i> <span>用户管理</span></a>
+            <ul>
+                <li class="{$menu_homeuser_add | default=''}"><a href="/bk_homeuser/add">添加用户</a></li>
+                <li class="{$menu_homeuser_list | default=''}"><a href="/bk_homeuser/list">用户列表</a></li>
+            </ul>
+        </li>
+        <li class="submenu {$menu_user | default=''}"> <a href="#"><i class="icon icon-user"></i> <span>管理员管理</span></a>
+            <ul>
+                <li class="{$menu_user_add | default=''}"><a href="/bk_user/add">添加管理员</a></li>
+                <li class="{$menu_user_list | default=''}"><a href="/bk_user/list">管理员列表</a></li>
+            </ul>
+        </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-cog"></i> <span>系统配置中心</span></a>
+            <ul>
+                <li><a href="#">系统设置</a></li>
+                <li><a href="#">邮件设置</a></li>
+                <li><a href="#">短信设置</a></li>
+                <li><a href="#">关联帐户</a></li>
+                <li><a href="#">支付工具</a></li>
+            </ul>
+        </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-signal"></i> <span>系统监控中心</span></a>
+            <ul>
+                <li><a href="#">登录信息统计</a></li>
+                <li><a href="#">访问日志管理</a></li>
+                <li><a href="#">用户站点状态</a></li>
+            </ul>
+        </li>
+        <li class="content"> <span>今日成交订单：</span>
+            <div class="progress progress-mini progress-danger active progress-striped">
+                <div style="width: 77%;" class="bar"></div>
+            </div>
+            <span class="percent">77%</span>
+            <div class="stat">214 / 14000人</div>
+        </li>
+        <li class="content"> <span>今日登录会员：</span>
+            <div class="progress progress-mini active progress-striped">
+                <div style="width: 87%;" class="bar"></div>
+            </div>
+            <span class="percent">87%</span>
+            <div class="stat">604 / 4000人</div>
+        </li>
+    </ul>
+</div>
+<!--左侧菜单栏 结束-->
+<!--公共部分结束-->

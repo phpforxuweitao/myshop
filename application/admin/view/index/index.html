@@ -1,0 +1,203 @@
+<!--main-container-part-->
+<div id="content">
+    <!--breadcrumbs-->
+    <div id="content-header">
+        <div id="breadcrumb"> <a id="tAjax" href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a></div>
+    </div>
+    <div class="container-fluid">
+        <div class="quick-actions_homepage">
+            <ul class="quick-actions">
+                <li class="bg_lo"><a href="javascript:;"> <i class="icon-th-list"></i>
+                    <span class="label label-info">{$g_total_nums}</span>总商品数</a>
+                </li>
+                <li class="bg_ls"> <a href="javascript:;"> <i class="icon-fullscreen"></i>
+                    <span class="label label-important">{$c_total_nums}</span> 总子分类数</a>
+                </li>
+                <li class="bg_lv"> <a href="javascript:;"> <i class="icon-fullscreen"></i>
+                    <span class="label label-important">{$o_total_nums}</span> 总订单数</a>
+                </li>
+                <li class="bg_lb"> <a href="javascript:;"> <i class="icon-user"></i><span class="label label-success">{$homeuser_total_nums}</span> 总用户数</a> </li>
+                <li class="bg_lg"> <a href="javascript:;"> <i class="icon-cog"></i> 系统配置中心</a> </li>
+                <li class="bg_lr"> <a href="javascript:;"> <i class="icon-signal"></i> 系统监控中心</a> </li>
+            </ul>
+        </div>
+        <!--End-Action boxes-->
+
+        <!--Chart-box-->
+        <div class="row-fluid">
+            <div class="widget-box">
+                <div class="widget-title bg_lg"><span class="icon"><i class="icon-signal"></i></span>
+                    <h5>访客动态图</h5>
+                </div>
+                <div class="widget-content" >
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <div class="chart"></div>
+                        </div>
+                        <div class="span3">
+                            <ul class="site-stats">
+                                <li class="bg_lh"><i class="icon-user"></i> <strong>{$homeuser_total_nums}</strong> <small>用户总数</small></li>
+                                <li class="bg_lh"><i class="icon-plus"></i> <strong>0</strong> <small>今日用户 </small></li>
+                                <li class="bg_lh"><i class="icon-shopping-cart"></i> <strong>656</strong> <small>0</small></li>
+                                <li class="bg_lh"><i class="icon-tag"></i> <strong>9540</strong> <small>{$o_total_nums}</small></li>
+                                <li class="bg_lh"><i class="icon-repeat"></i> <strong>10</strong> <small>10</small></li>
+                                <li class="bg_lh"><i class="icon-globe"></i> <strong>8540</strong> <small>66</small></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End-Chart-box-->
+        <hr/>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+                        <h5>最新文章</h5>
+                    </div>
+                    <div class="widget-content nopadding collapse in" id="collapseG2">
+                        <ul class="recent-posts">
+                            <li>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/static/admin/img/demo/av1.jpg"> </div>
+                                <div class="article-post"> <span class="user-info"><a href="#">1、文章标题...</a></span>
+                                    <p><a href="#">文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介...</a> </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/static/admin/img/demo/av1.jpg"> </div>
+                                <div class="article-post"> <span class="user-info"><a href="#">2、文章标题...</a></span>
+                                    <p><a href="#">文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章章简介文章简介文章简介文章简介...</a> </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/static/admin/img/demo/av1.jpg"> </div>
+                                <div class="article-post"> <span class="user-info"><a href="#">3、文章标题...</a></span>
+                                    <p><a href="#">文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章章简介文章简介文章简介文章简介...</a> </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/static/admin/img/demo/av1.jpg"> </div>
+                                <div class="article-post"> <span class="user-info"><a href="#">4、文章标题...</a></span>
+                                    <p><a href="#">文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章章简介文章简介文章简介文章简介...</a> </p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="user-thumb"> <img width="40" height="40" alt="User" src="/static/admin/img/demo/av1.jpg"> </div>
+                                <div class="article-post"> <span class="user-info"><a href="#">5、文章标题...</a></span>
+                                    <p><a href="#">文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章简介文章章简介文章简介文章简介文章简介...</a> </p>
+                                </div>
+                            <li>
+                                <button class="btn btn-warning btn-mini">查看更多>></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
+                        <h5>最新留言：</h5>
+                    </div>
+                    <div class="widget-content">
+                        <div class="todo">
+                            <ul>
+                                <li class="clearfix">
+                                    <div class="txt"> 非常好的建站平台，适合所有的人来用。 <span class="date badge badge-important">08.03.2013</span></div>
+                                    <div class="pull-right"> <a class="tip" href="#" title="管理"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="删除"><i class="icon-remove"></i></a> </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="txt"> 非常好的建站平台，适合所有的人来用。 <span class="date badge badge-info">08.03.2013</span></div>
+                                    <div class="pull-right"> <a class="tip" href="#" title="管理"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="删除"><i class="icon-remove"></i></a> </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="txt"> 非常好的建站平台，适合所有的人来用。 <span class="date badge badge-important">08.03.2013</span></div>
+                                    <div class="pull-right"> <a class="tip" href="#" title="管理"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="删除"><i class="icon-remove"></i></a> </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="txt"> 非常好的建站平台，适合所有的人来用。 <span class="date badge badge-info">08.03.2013</span></div>
+                                    <div class="pull-right"> <a class="tip" href="#" title="管理"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="删除"><i class="icon-remove"></i></a> </div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="txt"> 非常好的建站平台，适合所有的人来用。 <span class="date badge badge-important">08.03.2013</span></div>
+                                    <div class="pull-right"> <a class="tip" href="#" title="管理"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="删除"><i class="icon-remove"></i></a> </div>
+
+                                <li>
+                                    <button class="btn btn-warning btn-mini">查看更多>></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr/>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title bg_lo"  data-toggle="collapse" href="#collapseG3" > <span class="icon"> <i class="icon-chevron-down"></i> </span>
+                        <h5>最新模板</h5>
+                    </div>
+                    <div class="widget-content nopadding updates collapse in" id="collapseG3">
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix"><i class="icon-ok-sign"></i>
+                            <div class="update-done"><a title="" href="#"><strong>所属行业：金融&nbsp;&nbsp;&nbsp;&nbsp;颜色：红色&nbsp;&nbsp;&nbsp;&nbsp;价格：免费</strong></a> <span>简介：公理是要靠我们用拳头打出来的，记住，要有实力！</span> </div>
+                            <div class="update-date"><span class="update-day">P0010</span>模板编号</div>
+                        </div>
+                        <div class="new-update clearfix">
+                            <button class="btn btn-warning btn-mini">查看更多>></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
+                        <h5>数据一览：</h5>
+                    </div>
+                    <div class="widget-content">
+                        <ul class="unstyled">
+                            <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 81% 用户转化率 <span class="pull-right strong">总用户：567</span>
+                                <div class="progress progress-striped ">
+                                    <div style="width: 81%;" class="bar"></div>
+                                </div>
+                            </li>
+                            <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 72% 订单成交率 <span class="pull-right strong">总订单：507</span>
+                                <div class="progress progress-success progress-striped ">
+                                    <div style="width: 72%;" class="bar"></div>
+                                </div>
+                            </li>
+                            <li> <span class="icon24 icomoon-icon-arrow-down-2 red"></span> 53% 模板使用率 <span class="pull-right strong">总模板：457</span>
+                                <div class="progress progress-warning progress-striped ">
+                                    <div style="width: 53%;" class="bar"></div>
+                                </div>
+                            </li>
+                            <li> <span class="icon24 icomoon-icon-arrow-up-2 green"></span> 3% 用户回头率 <span class="pull-right strong">总登录：8</span>
+                                <div class="progress progress-danger progress-striped ">
+                                    <div style="width: 3%;" class="bar"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end-main-container-part-->

@@ -1,0 +1,117 @@
+<style>
+    .btn_disabled {
+        background-color: #67c5f5;
+    }
+    .btn_disabled:hover {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+    .btn_disabled:visited {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">管理员列表</a> </div>
+        <h1>
+            <a href="/bk_user/add" class="btn btn-success" style="float:left;margin:5px 0;">添加管理员</a>
+            <div id="search" style="top: 2px;margin-right: 30px;">
+                <form action="/bk_user/list" method="get">
+                    <select style="width: 80px;" name="searchSex">
+                        <option value="">请选择</option>
+                        <option
+                            {if !empty($s_Sex) && $s_Sex=="m"}
+                                selected
+                            {/if}
+                            value="m">男</option>
+                        <option
+                            {if !empty($s_Sex) && $s_Sex=="w"}
+                                selected
+                            {/if}
+                            value="w">女</option>
+                        <option
+                            {if !empty($s_Sex) && $s_Sex=="x"}
+                                selected
+                            {/if}
+                            value="x">保密</option>
+                    </select>
+                    <input type="text" name="searchWord" style="background-color:white; width: 160px; color: gray;" value="{$s_word | default=''}" placeholder="用户名..."/>
+                    <button type="submit" class="tip-bottom" title="搜索"><i class="icon-search icon-white"></i></button>
+                </form>
+            </div>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>管理员列表</h5>
+                        <!--<a href="/bk_user/orderlist" class="btn btn-info btn-mini" style=" float:left;margin:8px 0 0 20px;">升序/降序</a>-->
+                    </div>
+                    <div class="widget-content "><!--nopadding-->
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>用户名</th>
+                                <th>权限</th>
+                                <th>性别</th>
+                                <th>电话</th>
+                                <th>邮箱</th>
+                                <th>注册时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {empty name="ulist"}
+                                <tr>
+                                    <td colspan="8">暂无数据</td>
+                                </tr>
+                            {/empty}
+
+                            {volist name="ulist" id="vo"}
+
+                                <tr class="gradeX">
+                                    <td>{$vo->uid}</td>
+                                    <td>{$vo->uname}</td>
+                                    <td>{$vo->auth}</td>
+                                    <td>{$vo->sex}</td>
+                                    <td>{$vo->tel}</td>
+                                    <td>{$vo->email}</td>
+                                    <td>{$vo->create_time}</td>
+                                    <td>{$vo->status}</td>
+                                    <td class="center">
+                                        <a href="/bk_user/edit/{$vo->uid}" style="text-align: left" class="btn btn-primary btn_edit {if $vo->status==='禁用'}btn_disabled{/if}">修改</a>
+                                        {if $vo->status === '禁用'}
+                                        <a href="/bk_user/relieve/{$vo->uid}" style="text-align: right;" onclick="return confirm('确认解除对该用户的禁用?');" class="btn btn-success">解禁</a>
+                                        {else}
+                                        <a href="/bk_user/delete/{$vo->uid}" style="text-align: right;" onclick="return confirm('禁用而已,数据还在');" class="btn btn-danger">禁用</a>
+                                        {/if}
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        <!--分页按钮-->
+                        <div id="pageList" class="pagelist_r">
+                            {$ulist->render() | raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(".btn_edit").click(function(){
+    if ( $(this).hasClass('btn_disabled') ) {
+        alert('禁用状态,不可修改');
+        return false;
+    }
+});
+</script>

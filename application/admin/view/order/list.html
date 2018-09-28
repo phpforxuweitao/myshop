@@ -1,0 +1,106 @@
+<style>
+    .btn_disabled {
+        background-color: #67c5f5;
+    }
+    .btn_disabled:hover {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+    .btn_disabled:visited {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+    .th_tr>th {
+        line-height: 30px;
+    }
+    .gradeX>td {
+        line-height: 30px;
+    }
+    .title_word {
+        position: relative;
+        top: -6px;
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 40px;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">订单列表</a> </div>
+        <h1>
+            <div id="search" style="top: 2px;left: 8%;">
+                <form action="/bk_order/list" method="get">
+                    <span class="title_word">订单状态:</span>
+                    <select style="width: 120px;" name="s_status">
+                        <option value="">请选择</option>下单未发货2出库,未收货3收货完成4用户取消订单
+                        <option {if !empty($s_status) && $s_status=='1'}selected{/if} value="1">未发货</option>
+                        <option {if !empty($s_status) && $s_status=='2'}selected{/if} value="2">发货,未收货</option>
+                        <option {if !empty($s_status) && $s_status=='3'}selected{/if} value="3">收货完成</option>
+                        <option {if !empty($s_status) && $s_status=='4'}selected{/if} value="4">取消订单</option>
+                    </select>
+                    <span class="title_word">关键字:</span>
+                    <input type="search" name="s_key" style="background-color:white; width: 160px; color: gray;" value="{$s_key | default=''}" placeholder="订单号/收货人..."/>
+                    <button type="submit" class="tip-bottom" title="搜索"><i class="icon-search icon-white"></i></button>
+                </form>
+            </div>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <a href="/bk_order/orderlist-asc" class="btn btn-info btn-mini" style=" float:left;margin:8px 0 0 20px;">升序/降序</a>
+                    </div>
+                    <div class="widget-content "><!--nopadding-->
+                        <table class="table table-bordered data-table">
+                            <thead>
+                                <tr class="th_tr">
+                                    <th>订单号</th>
+                                    <th>总金额</th>
+                                    <th>下单时间</th>
+                                    <th>收货人</th>
+                                    <th>收货地址</th>
+                                    <th>总数量</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {empty name="olist"}
+                                    <tr>
+                                        <td colspan="8">暂无数据</td>
+                                    </tr>
+                                {/empty}
+                                {volist name="olist" id="vo"}
+                                <tr class="gradeX">
+                                    <td>{$vo->oid}</td>
+                                    <td>{$vo->total}</td>
+                                    <td>{:date('Y-m-d H:i:s'),$vo->create_time}</td>
+                                    <td>{$vo->homeusers->uname}</td>
+                                    <td>{$vo->addr}</td>
+                                    <td>{$vo->cnt}</td>
+                                    <td>{$vo->status}</td>
+                                    <td class="center">
+                                        <a href="/bk_order/edit-{$vo->oid}" style="text-align: left" class="btn btn-primary">修改</a>
+                                        <a href="/bk_order/detail-{$vo->oid}" style="text-align: left" class="btn btn-info">订单详情</a>
+                                        {if $vo->status=='未发货'}
+                                            <a href="/bk_order/send-{$vo->oid}" onclick="return confirm('确认对该订单执行发货操作?');" style="text-align: left" class="btn btn-success">发货</a>
+                                        {/if}
+                                        <a href="/bk_order/delete-{$vo->oid}" onclick="return confirm('确认要删除该订单?');" style="text-align: left" class="btn btn-danger">删除</a>
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        <!--分页按钮-->
+                        <div id="pageList" class="pagelist_r">
+                            {$olist->render() | raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

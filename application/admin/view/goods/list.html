@@ -1,0 +1,135 @@
+<style>
+    .btn_disabled {
+        background-color: #67c5f5;
+    }
+    .btn_disabled:hover {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+    .btn_disabled:visited {
+        cursor: not-allowed;
+        background-color: #67c5f5;
+    }
+    .th_tr>th {
+        line-height: 30px;
+    }
+    .gradeX>td {
+        line-height: 90px;
+    }
+    .gradeX>td:nth-child(2) {
+        font-size: 12px;
+        text-align: left;
+        line-height: 20px;
+    }
+    .title_word {
+        position: relative;
+        top: -6px;
+        margin-left: 20px;
+        font-size: 16px;
+        line-height: 40px;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">商品列表</a> </div>
+        <h1>
+            <div id="search" style="top: 2px;left: 0;">
+                <form action="/bk_goods/list" method="get">
+                    <span class="title_word">选择分类:</span>
+                    <select name="s_cate">
+                        <option value="">请选择</option>
+                        {volist name="clist" id="vo"}
+                            <?php $n = substr_count($vo->path,',')-1;?>
+                            <option
+                                    {if( !(empty($s_cate)) and ($s_cate == $vo->cid) )}
+                                        selected
+                                    {/if}
+                                value="{$vo->cid}">{:str_repeat('&nbsp;',4*$n)}|{:str_repeat('-',$n+1)}{$vo->cname}</option>
+                        {/volist}
+                    </select>
+                    <span class="title_word">关键字:</span>
+                    <input type="search" name="s_key" style="background-color:white; width: 160px; color: gray;" value="{$s_key | default=''}" placeholder="关键字..."/>
+                    <span class="title_word">价格:</span>
+                    <input type="text" name="maxprice" style="background-color:white; width: 120px; color: gray;" value="" placeholder="最低价格..."/>
+                    <input type="text" name="minprice" style="background-color:white; width: 120px; color: gray;" value="" placeholder="最高价格..."/>
+                    <button type="submit" class="tip-bottom" title="搜索"><i class="icon-search icon-white"></i></button>
+                </form>
+            </div>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <a href="/bk_goods/add" class="btn btn-success" style="float:left;margin:3px 0;">添加商品</a>
+                        <a href="/bk_goods/orderlist-asc" class="btn btn-info btn-mini" style=" float:left;margin:8px 0 0 20px;">升序/降序</a>
+                    </div>
+                    <div class="widget-content "><!--nopadding-->
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr class="th_tr">
+                                <th>编号</th>
+                                <th width="200">商品名称</th>
+                                <th>缩略图</th>
+                                <th width="100">分类名称</th>
+                                <th>单价</th>
+                                <th>库存量</th>
+                                <th>售出量</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {empty name="glist"}
+                                <tr>
+                                    <td colspan="8">暂无数据</td>
+                                </tr>
+                            {/empty}
+
+                            {volist name="glist" id="vo"}
+
+                                <tr class="gradeX">
+                                    <td>{$vo->gid}</td>
+                                    <td>{$vo->gname}</td>
+                                    <td>
+                                        <img width="80" height="40" src="/{:config('app.goodsImg_save_path')}{$vo->gpic}">
+                                    </td>
+                                    <td>{$vo->cates->cname}</td>
+                                    <td>{$vo->price}</td>
+                                    <td>{$vo->stock}</td>
+                                    <td>{$vo->salecnt}</td>
+                                    <td>{$vo->status}</td>
+                                    <td class="center">
+                                        <a href="/bk_goods/edit-{$vo->gid}-{$vo->cates->cid}" style="text-align: left" class="btn btn-primary btn_edit">修改</a>
+                                        {if $vo->status === '新品' or $vo->status === '下架'}
+                                        <a href="/bk_goods/{$vo->gid}/gUp" style="text-align: right;" onclick="return confirm('确认要将该商品上架?');" class="btn btn-success">上架</a>
+                                        {else}
+                                        <a href="/bk_goods/{$vo->gid}/gDown" style="text-align: right;" onclick="return confirm('确认要下架该商品?');" class="btn btn-warning">下架</a>
+                                        {/if}
+                                        <a href="/bk_goods/{$vo->gid}/gDelete" style="text-align: right;" onclick="return confirm('确认要删除该商品?');" class="btn btn-danger">删除</a>
+                                    </td>
+                                </tr>
+                            {/volist}
+                            </tbody>
+                        </table>
+                        <!--分页按钮-->
+                        <div id="pageList" class="pagelist_r">
+                            {$glist->render() | raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(".btn_edit").click(function(){
+        if ( $(this).hasClass('btn_disabled') ) {
+            alert('禁用状态,不可修改');
+            return false;
+        }
+    });
+</script>

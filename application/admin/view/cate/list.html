@@ -1,0 +1,72 @@
+<style>
+    #cate_list>tr>td {
+        height: 40px;
+        line-height: 40px;
+    }
+    .trs>th:nth-child(2),.trs>th:nth-child(4),.trs>th:nth-child(6),.trs>td:nth-child(2),.trs>td:nth-child(6),.trs>td:nth-child(4) {
+        text-align: left!important;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">分类列表</a> </div>
+        <h1>
+            <a href="/bk_cate/add" class="btn btn-success" style="float:left;margin: 5px 0;">添加分类</a>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>分类列表</h5>
+                        <a href="/bk_cate/orderlist" onclick=" alert('未开通'); return false;" class="btn btn-info btn-mini" style=" float:left;margin:8px 0 0 20px;">升序/降序</a>
+                    </div>
+                    <div class="widget-content"> <!--nopadding-->
+                        <table class="table table-bordered data-table">
+                            <thead>
+                            <tr class="trs">
+                                <th width="5%">ID</th>
+                                <th>分类名称</th>
+                                <th width="8%">父级ID</th>
+                                <th>分类的路径</th>
+                                <th>最近修改时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cate_list">
+                                {empty name="cate_list"}
+                                    <tr><td colspan="6">暂无数据</td></tr>
+                                {/empty}
+                                {volist name="cate_list" id="vo"}
+                                <tr class="gradeX trs">
+                                    <td>{$vo->cid}</td>
+                                    <?php
+                                    $n = substr_count($vo->path,',')-1;
+                                ?>
+                                    <td>{:str_repeat('&nbsp;',6*$n)}|{:str_repeat('-',$n+1)} {$vo->cname}</td>
+                                    <td>{$vo->pid}</td>
+                                    <td>{$vo->path}</td>
+                                    <td>{$vo->update_time}</td>
+                                    <td class="center">
+                                        <a href="/bk_cate/{$vo->cid}/edit" class="btn btn-primary">修改</a>
+                                        <a href="/bk_cate/delete-{$vo->cid}" onclick="return confirm('确认要删除该分类?');" class="btn btn-danger">删除</a>
+                                        {if $n<2}
+                                            <a href="/bk_cate/add/{$vo->cid}" class="btn btn-info">添加子类</a>
+                                        {/if}
+                                    </td>
+                                </tr>
+                                {/volist}
+                            </tbody>
+                        </table>
+                        <!--分页按钮-->
+                        <div id="pageList" class="pagelist_r">
+                            {$cate_list->render() | raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

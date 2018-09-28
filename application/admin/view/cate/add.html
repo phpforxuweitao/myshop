@@ -1,0 +1,113 @@
+<style>
+    .form-vertical {
+        margin-top: 20px;
+    }
+    @media screen and (min-width: 450px){
+        .form-vertical {
+            position: relative;
+            left: 30px;
+        }
+    }
+    @media screen and (min-width: 500px){
+        .form-vertical {
+            position: relative;
+            left: 100px;
+        }
+    }
+    @media screen and (min-width: 700px){
+        .form-vertical {
+            position: relative;
+            left: 160px;
+        }
+    }
+    @media screen and (min-width: 850px){
+        .form-vertical {
+            position: relative;
+            left: 180px;
+        }
+    }
+    .form-vertical table tr td:nth-child(2){
+        text-align: left;
+    }
+    .form-vertical table tr td:nth-child(2)>input,select {
+        margin-left: 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>input[type='submit'] {
+        padding: 4px 95px;
+    }
+    .form-vertical table tr td:nth-child(2)>input[type='text'] {
+        width: 300px;
+    }
+    .form-vertical table tr td:nth-child(1) {
+        float: left;
+        margin: 5px 0;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="#" class="current">添加分类</a> </div>
+        <h1>
+            <a href="/bk_cate/list" class="btn btn-success" style="float:left;margin:5px 0;">返回分类列表</a>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+                        <h5>添加分类</h5>
+                    </div>
+                    <div class="widget-content">
+                        <form id="fm_addCategory" class="form-vertical" action="/bk_cate/{$cid | default=0}/save" method="post">
+                            <table>
+                                <tr>
+                                    <td>父级分类</td>
+                                    <td>
+                                        <select name="pid" id="pid">
+                                            <option value="0">顶级分类</option>
+                                            {volist name="data_cate" id="vo"}
+                                                <?php
+                                                $n = substr_count($vo->path,',')-1;
+                                                ?>
+                                                <option
+                                                        {if $vo->cid == $cid}selected{/if}
+                                                    value="{$vo->cid}">{:str_repeat('&nbsp;',4*$n)}|{:str_repeat('-',$n+1)} {$vo->cname}</option>
+                                            {/volist}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>分类名称</td>
+                                    <td>
+                                        <input type="text" class="ipt" autofocus name="cname" autocomplete="off" placeholder="请输入分类名称...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" class="btn btn-success btn_save" value="添加" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+//给所有添加按钮添加 点击之后按钮的不可用状态
+$("#fm_addCategory .ipt").keydown(function(){
+    if (event.keyCode == 13) { //判断是否为回车键,Event是window对象的一个属性,是全局的
+        event.keyCode = 0;//屏蔽回车键
+        event.returnValue = false;
+        alert('回车键不可用!点击添加按钮提交');
+    }
+});
+$("#pid").change(function(){
+    var $val = $(this).find('option:selected').val();
+    $("#fm_addCategory").attr('action','/bk_cate/'+$val+'/save');
+});
+</script>

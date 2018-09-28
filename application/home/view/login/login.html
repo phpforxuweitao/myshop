@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="common/common_head_login_register"}
+    <title>登录</title>
+    <link rel="stylesheet" href="__HOME__/css/login.css">
+</head>
+<body>
+    <div class="head">
+        <div class="layout">
+            <ul>
+                <li>
+                    <a href="/"><img src="__HOME__/images/hw_logo.png"></a>
+                </li>
+                <li>
+                    <b>|</b>
+                    <b>华为商城</b>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <div class="layout">
+            <div class="login_area">
+                <div class="login_area_h">
+                    <div data-type="phone" class="login_btns currentColor">帐号登录</div>
+                    <div data-type="qrcode" class="login_btns">扫码登录</div>
+                </div>
+                <ul class="login_area_b">
+                    <!--手机登录框-->
+                    <li id="login_phone" class="">
+                        <div class="login_main">
+                            <form action="/dologin" method="post">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="text" autofocus autocomplete="off" name="uname" placeholder="手机号码 / 邮箱地址" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="password" name="upwd" autocomplete="off" placeholder="密码" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="checkbox" id="saveLoginBox" name="saveLogin" value="savelogin" autocomplete="off" />
+                                            <label for="saveLoginBox" title="在公共场所不要勾选此选项,推荐在个人电脑上勾选">记住华为帐号</label>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" value="登录" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <a class="more" href="#">更多</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <ul class="regs_forg">
+                                                <li>
+                                                    <a href="/register">注册帐号</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">忘记密码？</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </div>
+                        <div class="third_login">
+                            <div class="third_login_h">
+                                <i></i>
+                                <span>其他方式登陆</span>
+                                <i></i>
+                            </div>
+                            <div class="third_login_b">
+                                <div class="third_login_b_link">
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                    <a href="#"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!--二维码登录框-->
+                    <li id="login_qrcode" class="hide">
+                        <div class="login_qrcode_img">
+                            <img src="__HOME__/images/getqrWeb.png">
+                        </div>
+                        <div class="login_qrcode_info">
+                            <p>使用<span>华为移动服务APP</span>扫一扫</p>
+                            <p>若您使用华为手机,请进入"设置">"华为帐号"扫码登录。</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div style="height: 100px; text-align: center; line-height: 100px;" class="footer">
+        <p>华为商城xxoo</p>
+    </div>
+
+<script type="text/javascript" src="__HOME__/js/login.js"></script>
+</body>
+</html>

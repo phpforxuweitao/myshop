@@ -1,0 +1,157 @@
+<style>
+    .form-vertical {
+        margin-top: 20px;
+    }
+    @media screen and (min-width: 450px){
+        .form-vertical {
+            position: relative;
+            left: 30px;
+        }
+    }
+    @media screen and (min-width: 500px){
+        .form-vertical {
+            position: relative;
+            left: 100px;
+        }
+    }
+    .form-vertical table tr td:nth-child(1){
+        text-align: right;
+    }
+    .form-vertical table tr td:nth-child(2){
+        text-align: left;
+    }
+    .form-vertical table tr td:nth-child(2)>input,select,textarea {
+        width: 260px;
+        margin-left: 20px;
+    }
+    .form-vertical table tr td:nth-child(2)>textarea {
+        margin-top: 10px;
+        resize: none;
+        width: 600px;
+    }
+    .form-vertical table tr td:nth-child(2)>input[type='submit'] {
+        padding: 4px 95px;
+    }
+    .form-vertical table tr td:nth-child(2).sex {
+        padding-bottom: 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>label {
+        float: left;
+        margin: 0 10px;
+    }
+    .form-vertical table tr td:nth-child(2)>label>input[type='radio'] {
+        position: relative;
+        top: -3px;
+    }
+    .form-vertical table tr td:nth-child(2)>label>input[type='radio']:nth-child(1) {
+        margin-left: 10px;
+    }
+</style>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="/bk_index" title="前往首页" class="tip-bottom"><i class="icon-home"></i> 首页</a> <a href="javascript:;" class="current">添加商品</a> </div>
+        <h1>
+            <a href="/bk_goods/list" class="btn btn-success" style="float:left;margin:5px 0;">返回商品列表</a>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <hr>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="widget-box">
+                    <div class="widget-title">
+                        <h5>添加商品页面</h5>
+                    </div>
+                    <div class="widget-content">
+                        <form id="fm_addGoods" enctype="multipart/form-data" class="form-vertical" action="/bk_goods/save" method="post">
+                            <table>
+                                <tr>
+                                    <td>商品分类</td>
+                                    <td>
+                                        <select name="cate_id" id="cate_id">
+                                            <option value="">请选择</option>
+                                            {volist name="cates_list" id="vo"}
+                                                <?php $n = substr_count($vo->path,',')-1; ?>
+                                                <option value="{$vo->cid}">{:str_repeat('&nbsp;',4*$n)}|{:str_repeat('-',$n+1)} {$vo->cname}</option>
+                                            {/volist}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品名称</td>
+                                    <td>
+                                        <input type="text" style="width: 400px;" name="gname" autocomplete="off" placeholder="输入商品名称...">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品定价</td>
+                                    <td>
+                                        <input type="number" autocomplete="off" name="price" class="g_number" placeholder="输入商品定价..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品库存</td>
+                                    <td>
+                                        <input type="number" autocomplete="off" class="g_number" name="stock" placeholder="输入商品库存..." />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品缩略图</td>
+                                    <td class="gpic">
+                                        <input type="file" name="gpic" accept="image/*" id="exampleInputFile">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品描述</td>
+                                    <td>
+                                        <textarea name="gdesc" title="" cols="80" rows="6"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>商品状态</td>
+                                    <td class="sex">
+                                        <label>
+                                            <input type="radio" autocomplete="off" name="status" checked value="1"> 新品
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" value="2"> 上架
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="status" value="3"> 下架
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <input type="submit" class="btn btn-success btn_save" value="添加" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+//给所有添加按钮添加 点击之后按钮的不可用状态
+$("#fm_addGoods input").keydown(function(){
+    if (event.keyCode == 13) { //判断是否为回车键,Event是window对象的一个属性,是全局的
+        event.keyCode = 0;//屏蔽回车键
+        event.returnValue = false;
+        alert('回车键不可用!点击添加按钮提交');
+    }
+});
+$(".btn_save").click(function () {
+    //添加按钮点击事件
+    // $(this).attr('disabled','disabled');
+});
+//商品定价和库存不允许小于0
+$(".g_number").bind('input propertychange',function(){
+    if ( $(this).val() <=-1 ) {
+        $(this).val(0);
+    }
+});
+</script>
